@@ -30,7 +30,7 @@
             <div class="card shadow-sm" style="width: 30rem;">
                 <!-- <img src="..." class="card-img-top" alt="..."> -->
                 <div class="card-body">
-                    <p class="card-text text-center" style="text-align: center; font-size: 30px;"><?= APP_NAME ?></p>
+                    <p class="card-text text-center" style="text-align: center; font-size: 30px;">ระบบ<?= APP_NAME ?></p>
                     <form id="login-main">
                         <input type="hidden" id="login-url" name="loginURL" value="<?= url_where("../service/login_main.php") ?>">
                         <div class="form-floating mb-4 mt-4">
@@ -43,10 +43,9 @@
                         </div>
                         <button type="submit" class="button btn-login btn-singin">เข้าสู่ระบบ</button>
                         <br>
-
                         <p class="lh-base text-center" style="margin-top: 30px;">
                             ลืม <a href="#" class="text-decoration-none">Username / Password</a> หรือไม่<br>
-                            สร้างบัญชีหรือไม่ <a href="" class="text-decoration-none">ลงทะเบียนที่นี้</a>
+                            สร้างบัญชีหรือไม่ <a href="<?= url_where("../pages/register.php", array("register" => "Y"), true) ?>" class="text-decoration-none">ลงทะเบียนที่นี้</a>
                         </p>
                     </form>
                 </div>
