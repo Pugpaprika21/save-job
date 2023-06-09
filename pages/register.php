@@ -72,6 +72,6 @@ if ($register !== 'Y') {
     </div>
 </div>
 
-<!-- <script src="../public/js/registerMain.js?t=<?= CREATE_TIME_AT ?>"></script> -->
+<script src="../public/js/registerMain.js?t=<?= CREATE_TIME_AT ?>"></script>
 
 <?php require_once __DIR__ . "../../view/layout/footer.php"; ?>
