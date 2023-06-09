@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const loginURL = document.getElementById("login-url").value;
     const loginMain = document.getElementById("login-main");
 
@@ -22,13 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
         axios
             .post(loginURL, { username: username, userpass: userpass })
             .then((res) => {
-
                 let response = res.data;
 
-                if (res.data) {
-
+                if (res.data.status) {
+                    console.log(response);
                 }
-                console.log(response);
             })
             .catch((err) => {
                 console.error(err);

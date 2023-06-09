@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . "../../src/include/include.php"; ?>
 
-<?php require_once __DIR__ . "../../view/templates/header.php"; ?>
+<?php require_once __DIR__ . "../../view/layout/header.php"; ?>
 
 <style>
     .btn-login {
@@ -57,4 +57,4 @@
 
 <script src="../public/js/loginMain.js?t=<?= CREATE_TIME_AT ?>"></script>
 
-<?php require_once __DIR__ . "../../view/templates/footer.php"; ?>
+<?php require_once __DIR__ . "../../view/layout/footer.php"; ?>
