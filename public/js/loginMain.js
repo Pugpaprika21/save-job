@@ -22,7 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
         axios
             .post(loginURL, { username: username, userpass: userpass })
             .then((res) => {
-                console.log(res);
+
+                let response = res.data;
+
+                if (res.data) {
+
+                }
+                console.log(response);
             })
             .catch((err) => {
                 console.error(err);
