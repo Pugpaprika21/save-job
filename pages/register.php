@@ -1,8 +1,12 @@
-<?php 
+<?php
 
-require_once __DIR__ . "../../src/include/include.php"; 
+require_once __DIR__ . "../../src/include/include.php";
 
 $register = get_b64("register");
+
+if ($register !== 'Y') {
+    redirect_to("../pages/login.php", array("register" => "error"));
+}
 
 ?>
 
