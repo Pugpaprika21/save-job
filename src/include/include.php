@@ -16,7 +16,7 @@ session_start();
 date_default_timezone_set('Asia/Bangkok');
 
 const WRITE_LOG = false;
-const APP_NAME = 'ระบบร้านกาแฟ';
+const APP_NAME = 'บันทึกการทำงาน';
 
 $app_root = __DIR__ . '../../';
 

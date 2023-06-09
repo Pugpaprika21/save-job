@@ -13,7 +13,7 @@ return [
     ],
     'style' => [
         'title' => '',
-        'main_body' => 'background-color: #ECF0F1; font-family: \'Mitr\', sans-serif;'
+        'main_body' => 'background-color: #F0FFFE; font-family: \'Mitr\', sans-serif;'
     ],
     'js' => [
         'ajax' => 'https://code.jquery.com/jquery-3.6.4.min.js',

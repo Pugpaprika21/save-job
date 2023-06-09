@@ -5,7 +5,7 @@ return [
         'host' => 'localhost',
         'user' => 'root',
         'pass' => '',
-        'name' => 'example_db',
+        'name' => 'save_job_db',
         'char_set' => 'utf8'
     ]
 ];
