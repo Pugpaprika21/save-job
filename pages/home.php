@@ -6,6 +6,8 @@ if (empty($_SESSION['user_data'])) {
     redirect_to("../pages/login.php", array('user_name' => 'N', 'user_pass' => 'N'));
 }
 
+$main_manu = db_select("select count(*) as count_manu from manu_main_system_tb");
+
 ?>
 
 <?php require __DIR__ . "../../view/layout/header.php"; ?>
@@ -16,7 +18,6 @@ if (empty($_SESSION['user_data'])) {
             <a class="navbar-brand" href="#">
                 <img src="../upload/image/bootstrap-logo-shadow.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,52 +89,31 @@ if (empty($_SESSION['user_data'])) {
 
 <!-- card body -->
 
-<div class="card-content-main" style="margin-top: 20px;">
+<div class="card-content-main" style="margin-top: 40px;">
     <div class="container-fluid shadow-sm">
         <div class="card">
             <div class="card-body">
-                <!--  -->
                 <div class="card-content-sub">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <?php if ($main_manu['count_manu'] > 0) : ?>
+
+                        <?php elseif ($main_manu['count_manu'] == 0) : ?>
+                            <div class="col">
+                                <div class="card h-100" id="card-manu-">
+                                    <div class="card-body shadow-sm rounded">
+                                        <a href="http://" class="text-decoration-none">
+                                            <div class="text-center mt-2 mb-2">
+                                                <img src="../upload/image/home_manu.png" class="rounded" alt="..." style="width: 20%; height: 85%;">
+                                            </div>
+                                            <h5 class="card-title"><?= APP_NAME ?></h5>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a short card.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <!--  -->
             </div>
         </div>
     </div>
