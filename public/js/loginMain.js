@@ -27,11 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
         axios
             .post(loginURL, loginData)
             .then((res) => {
-                let response = res.data;
-                console.log(response);
-                // if (res.data.status) {
-                //     console.log(response);
-                // }
+                let status = res.data.data.status;
+                let text = res.data.data.text;
+                let toHomeUrl = document.getElementById("to-home-url").value;
+
+                if (status == 1) {
+                    Swal.fire({
+                        icon: "success",
+                        text: text,
+                    }).then(function(e) {
+                        window.location.href = toHomeUrl;
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    icon: "error",
+                    text: text,
+                });
+                return;
             })
             .catch((err) => {
                 console.error(err);

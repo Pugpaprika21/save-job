@@ -7,13 +7,14 @@ $api = new API();
 $request = $api->setRequest();
 
 if ($request['action_'] == 'login') {
+    $login_resp = array();
     $user_name = str($request['username']);
     $user_pass = str($request['userpass']);
 
     $chk_login = db_select("select user_name, user_pass, user_status, user_token, count(*) as chk_login from user_tb where user_name = '{$user_name}' and user_pass = '{$user_pass}'");
-    
+
     if ($chk_login['chk_login'] > 0) {
-        
+
         if ($chk_login['user_name'] == $user_name && $chk_login['user_pass'] == $user_pass) {
 
             $user_data = array();
@@ -26,11 +27,16 @@ if ($request['action_'] == 'login') {
 
             $_SESSION['user_login_data'] = $user_data;
 
-            echo $api->setResponse($request, "สำเร็จ");
+            $login_resp['status'] = 1;
+            $login_resp['text'] = "ล็อคอินสำเร็จ";
+
+            echo $api->setResponse($login_resp, "");
             exit;
         }
     }
 
-    echo $api->setResponse($request, "ไม่สำเร็จ");
+    $login_resp['status'] = 0;
+    $login_resp['text'] = "ล็อคอินไม่สำเร็จ";
+    echo $api->setResponse($login_resp, "");
     exit;
 }

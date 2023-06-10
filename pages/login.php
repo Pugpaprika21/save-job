@@ -32,6 +32,7 @@
                 <div class="card-body">
                     <p class="card-text text-center" style="text-align: center; font-size: 30px;">ระบบ<?= APP_NAME ?></p>
                     <form id="login-main">
+                        <input type="hidden" id="to-home-url" name="homeURL" value="<?= url_where("../pages/home.php") ?>">
                         <input type="hidden" id="login-url" name="loginURL" value="<?= url_where("../service/login_main.php") ?>">
                         <div class="form-floating mb-4 mt-4">
                             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
