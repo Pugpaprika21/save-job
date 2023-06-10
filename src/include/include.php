@@ -33,7 +33,7 @@ define('CREATE_DATE_AT', now('d'));
 define('CREATE_TIME_AT', now('t'));
 define('CREATE_DT_AT', now());
 
-define('U_SYS_TOKEN', token_generator(rend_string()));
+define('U_SYS_TOKEN', token_generator(rend_string() . CREATE_TIME_AT));
 define('U_IP', getenv('HTTP_X_FORWARDED_FOR') ? getenv('HTTP_X_FORWARDED_FOR') : getenv("REMOTE_ADDR"));
 define('APP_URL', isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : __DIR__);
 unset($app_root);

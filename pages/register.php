@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "../../src/include/include.php";
+require __DIR__ . "../../src/include/include.php";
 
 $register = get_b64("register");
 
@@ -10,7 +10,7 @@ if ($register !== 'Y') {
 
 ?>
 
-<?php require_once __DIR__ . "../../view/layout/header.php"; ?>
+<?php require __DIR__ . "../../view/layout/header.php"; ?>
 
 <style>
     .btn-register-main {
@@ -52,7 +52,7 @@ if ($register !== 'Y') {
                             <label for="userpass">Password</label>
                         </div>
                         <div class="form-floating mb-4 mt-4">
-                            <input type="phone" class="form-control" id="userPhone" name="userPhone" placeholder="Phone">
+                            <input type="phone" class="form-control" id="userPhone" name="userPhone" placeholder="Phone" >
                             <label for="userPhone">Phone</label>
                         </div>
 
@@ -63,7 +63,7 @@ if ($register !== 'Y') {
                         <button type="submit" class="button btn-register-main btn-register">ลงทะเบียน</button>
                         <br>
                         <p class="lh-base text-center" style="margin-top: 30px;">
-                            <a href="<?= url_where("../pages/login.php") ?>" class="text-decoration-none">กลับสู่หน้าเข้าสู่ระบบ</a>
+                            <a id="back-login-url" href="<?= url_where("../pages/login.php") ?>" class="text-decoration-none">กลับสู่หน้าเข้าสู่ระบบ</a>
                         </p>
                     </form>
                 </div>
@@ -74,4 +74,4 @@ if ($register !== 'Y') {
 
 <script src="../public/js/registerMain.js?t=<?= CREATE_TIME_AT ?>"></script>
 
-<?php require_once __DIR__ . "../../view/layout/footer.php"; ?>
+<?php require __DIR__ . "../../view/layout/footer.php"; ?>

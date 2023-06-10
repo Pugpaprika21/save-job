@@ -18,19 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        let loginData = {
+            action_: "login",
+            username: username,
+            userpass: userpass,
+        };
+
         axios
-            .post(loginURL, { username: username, userpass: userpass })
+            .post(loginURL, loginData)
             .then((res) => {
                 let response = res.data;
-
-                if (res.data.status) {
-                    console.log(response);
-                }
+                console.log(response);
+                // if (res.data.status) {
+                //     console.log(response);
+                // }
             })
             .catch((err) => {
                 console.error(err);
             });
-
-        console.log(`${username} ${loginURL}`);
     });
 });
