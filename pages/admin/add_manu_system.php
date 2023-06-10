@@ -1,20 +1,23 @@
 <?php
 
-require __DIR__ . "../../src/include/include.php";
+require __DIR__ . "../../../src/include/include.php";
+
+$system = get_b64("system");
+$create_manu = get_b64("create_manu");
 
 if (empty($_SESSION['user_data'])) {
-    redirect_to("../pages/login.php", array('user_name' => 'N', 'user_pass' => 'N'));
+    redirect_to("../../../process/logout_main.php", array('user_name' => 'N', 'user_pass' => 'N'));
 }
 
 ?>
 
-<?php require __DIR__ . "../../view/layout/header.php"; ?>
+<?php require __DIR__ . "../../../view/layout/header.php"; ?>
 
 <div class="nav-main">
     <nav class="navbar navbar-expand-lg shadow p-2 mb-4 bg-body-tertiary rounded">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../upload/image/bootstrap-logo-shadow.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
+                <img src="../../upload/image/bootstrap-logo-shadow.png" alt="Logo" width="30" height="25" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,15 +63,15 @@ if (empty($_SESSION['user_data'])) {
                             <?= $system_config['nav']['admin_setting_permission'] ?>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= url_where("../pages/admin/add_manu_system.php", array('system' => 'add_manu', 'create_manu' => 'Y'), true) ?>">จัดการเมนู</a></li>
+                            <li><a class="dropdown-item" href="<?= url_where("../../pages/admin/add_manu_system.php", array('system' => 'add_manu', 'create_manu' => 'Y'), true) ?>">จัดการเมนู</a></li>
                         </ul>
                     </li>
 
                 </ul>
 
                 <span class="navbar-text">
-                    <a class="navbar-brand" href="<?= url_where("../process/logout_main.php", array('logout' => 'Y'), true) ?>">
-                        <img src="../upload/image/profile-icon.png" alt="Logo" width="35" height="30" class="d-inline-block align-text-top">
+                    <a class="navbar-brand" href="<?= url_where("../../process/logout_main.php", array('logout' => 'Y'), true) ?>">
+                        <img src="../../upload/image/profile-icon.png" alt="Logo" width="35" height="30" class="d-inline-block align-text-top">
                     </a>
                 </span>
             </div>
@@ -76,56 +79,14 @@ if (empty($_SESSION['user_data'])) {
     </nav>
 </div>
 
-<!-- card body -->
-
 <div class="card-content-main" style="margin-top: 40px;">
-    <?php
-    // get manu
-    $num_main = db_select("select count(*) as count_manu from manu_main_system_tb where mms_status = 'Y'");
-
-    ?>
     <div class="container-fluid">
         <div class="card">
             <div class="card-body shadow-sm">
-                <div class="card-content-sub">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <?php if ($num_main['count_manu'] > 0) : ?>
 
-                        <?php elseif ($num_main['count_manu'] == 0) : ?>
-                            <style>
-                                #card-manu- .card-body {
-                                    transition: background-color 0.3s ease;
-                                    border: 1px solid #ccc;
-                                    border-color: #ccc;
-                                }
-
-                                #card-manu- .card-body:hover {
-                                    background-color: #A2EBCC;
-                                    border-color: #307C5C;
-                                }
-                            </style>
-                            <div class="col">
-                                <div class="card h-100" id="card-manu-">
-                                    <div class="card-body shadow-sm rounded">
-                                        <a href="#" class="text-decoration-none">
-                                            <div class="text-center mt-4 mb-4">
-                                                <img src="../upload/image/home_manu.png" class="rounded" alt="..." style="width: 20%; height: 85%;">
-                                            </div>
-                                            <h5 class="card-title">เมนูหลัก / ระบบ<?= APP_NAME ?></h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- card body -->
-
-
-<?php require __DIR__ . "../../view/layout/footer.php"; ?>
+<?php require __DIR__ . "../../../view/layout/footer.php"; ?>
