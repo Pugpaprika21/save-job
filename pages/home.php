@@ -91,7 +91,7 @@ if (empty($_SESSION['user_data'])) {
     <?php
     // get manu
     $num_main = db_select("select count(*) as count_manu from manu_main_system_tb where ms_status = 'Y'");
-    
+
     ?>
     <div class="container-fluid">
         <div class="card">
@@ -101,6 +101,18 @@ if (empty($_SESSION['user_data'])) {
                         <?php if ($num_main['count_manu'] > 0) : ?>
 
                         <?php elseif ($num_main['count_manu'] == 0) : ?>
+                            <style>
+                                #card-manu- .card-body {
+                                    transition: background-color 0.3s ease;
+                                    border: 1px solid #ccc;
+                                    border-color: #ccc;
+                                }
+
+                                #card-manu- .card-body:hover {
+                                    background-color: #A2EBCC;
+                                    border-color: #307C5C;
+                                }
+                            </style>
                             <div class="col">
                                 <div class="card h-100" id="card-manu-">
                                     <div class="card-body shadow-sm rounded">
