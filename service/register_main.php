@@ -30,7 +30,7 @@ if ($request['action_'] == 'register') {
         $regis['create_time_at'] = CREATE_TIME_AT;
         $regis['create_ip_at'] = U_IP;
 
-        $regis_insert = db_insert("user_tb", $regis, "user_id");
+        db_insert("user_tb", $regis, "user_id");
         unset($regis);
 
         $regis_resp['status'] = 1;

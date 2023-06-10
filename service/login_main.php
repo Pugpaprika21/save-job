@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "../../src/include/include.php";
+require __DIR__ . "../../src/include/include.php";
 
 $api = new API();
 
@@ -25,7 +25,7 @@ if ($request['action_'] == 'login') {
             $user_data['user_login_date'] = CREATE_DATE_AT;
             $user_data['user_login_time'] = CREATE_TIME_AT;
 
-            $_SESSION['user_login_data'] = $user_data;
+            $_SESSION['user_data'] = $user_data;
 
             $login_resp['status'] = 1;
             $login_resp['text'] = "ล็อคอินสำเร็จ";

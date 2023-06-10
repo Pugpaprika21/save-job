@@ -25,6 +25,7 @@ $system_config = require "{$app_root}configs/system_settings.php";
 
 require "{$app_root}functions/@@helpers.php";
 require "{$app_root}functions/@@mysqli_db.php";
+require "{$app_root}functions/custom.php";
 require "{$app_root}classes/API.php";
 require "{$app_root}classes/Http.php";
 require "{$app_root}classes/Str.php";
