@@ -55,6 +55,6 @@
     </div>
 </div>
 
-<script src="../public/js/loginMain.js?t=<?= CREATE_TIME_AT ?>"></script>
+<script src="../public/js/components/loginMain.js?t=<?= CREATE_TIME_AT ?>"></script>
 
 <?php require __DIR__ . "../../view/layout/footer.php"; ?>

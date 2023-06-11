@@ -1,3 +1,11 @@
+// const formSubmitSystem = document.getElementById("form-btn-save-system");
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     formSubmitSystem.addEventListener("submit", function(e) {
+//         alert("ssssssss");
+//     });
+// });
+
 function addRow() {
     const table = document.getElementById("add-row-submanu");
     const rowsCount = table.rows.length;
