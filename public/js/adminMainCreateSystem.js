@@ -12,7 +12,7 @@ function addRow() {
     cell2.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย"></div>`;
     cell3.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"></div>`;
     cell4.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์"></div>`;
-    cell5.innerHTML = `<div class="mt-2 mb-2"><div class="text-center"><button class="btn btn-primary btn-sm" type="button" onclick="addRow()">เพิ่มเเถว</button>&nbsp;<button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)">ลบเเถว</button></div></div>`;
+    cell5.innerHTML = `<div class="mt-2 mb-2"><div class="text-center"><button class="btn btn-primary btn-sm" type="button" onclick="addRow()">${bootstrapIcon.btn.add} เพิ่มเเถว</button>&nbsp;<button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)">${bootstrapIcon.btn.del} ลบเเถว</button></div></div>`;
 }
 
 function deleteRow(self) {
