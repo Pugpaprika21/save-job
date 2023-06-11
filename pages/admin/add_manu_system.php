@@ -13,6 +13,28 @@ if (empty($_SESSION['user_data'])) {
 
 <?php require __DIR__ . "../../../view/layout/header.php"; ?>
 
+<style>
+
+    #btn-save-system {
+        background-color: #3F3385;
+        border: none;
+        color: white;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+
+    #btn-save-system:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
 <div class="nav-main">
     <nav class="navbar navbar-expand-lg shadow p-2 mb-4 bg-body-tertiary rounded">
         <div class="container-fluid">
@@ -79,14 +101,168 @@ if (empty($_SESSION['user_data'])) {
     </nav>
 </div>
 
+
 <div class="card-content-main" style="margin-top: 40px;">
     <div class="container-fluid">
+        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2" type="button">Button</button>
+            <button class="btn btn-primary" type="button">Button</button>
+        </div> -->
         <div class="card">
             <div class="card-body shadow-sm">
+                <form action="<?= url_where("../../process/admin/save_manu_system.php") ?>" method="post" enctype="multipart/form-data">
+                    <p class="text-start">เมนู / ระบบหลัก</p>
+                    <div class="row">
+                        <!--  -->
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="mms_title" name="mms_title" placeholder="หัวข้อระบบหลัก">
+                                <!-- <span class="input-group-text" id="basic-addon2">หัวข้อระบบหลัก</span> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
 
+                        <!--  -->
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-sm">
+                                <textarea class="form-control" aria-label="With textarea" id="mms_text" name="mms_text" placeholder="รายละเอียดระบบหลัก"></textarea>
+                                <!-- <span class="input-group-text">รายละเอียดระบบหลัก</span> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
+
+                        <!--  -->
+                        <div class="col-sm-6">
+                            <div class="input-group mt-3 mb-3">
+                                <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" title="Choose your color">
+                                <!-- <span class="input-group-text" id="basic-addon2">สีพื้นหลังระบบ</span> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
+
+                        <!--  -->
+                        <div class="col-sm-6">
+                            <div class="input-group mb-3">
+                                <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" title="Choose your color">
+                                <!-- <span class="input-group-text" id="basic-addon2">สีขอบระบบ</span> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
+
+                        <!--  -->
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="fs_img_manu" class="form-label">รูปโปรไฟล์ระบบ</label>
+                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg">
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
+                    </div>
+
+                    <p class="text-start mt-2">เมนู / ระบบหลักย่อย</p>
+                    <div class="row">
+                        <!-- <div class="mb-3">
+                        <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                        </div>
+                    </div> -->
+                        <!--  -->
+                        <div class="col-sm-10">
+                            <!-- <input type="hidden" id="btn-add" value="<?= $system_config['bootstrap']['btn_add'] ?>">
+                        <input type="hidden" id="btn-del" value="<?= $system_config['bootstrap']['btn_del'] ?>"> -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead style="color: #FFFFFF; background-color: #3F3385;">
+                                        <tr>
+                                            <th class="text-center" scope="col">ลำดับ</th>
+                                            <th class="text-center" scope="col">หัวข้อระบบย่อย</th>
+                                            <th class="text-center" scope="col">รายละเอียดระบบย่อย</th>
+                                            <th class="text-center" scope="col">ลิงค์</th>
+                                            <th class="text-center" scope="col">จัดการ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="add-row-submanu">
+                                        <tr>
+                                            <th scope="col">
+                                                <div class="mt-2 mb-2 text-center">
+                                                    1
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="mt-2 mb-2 text-center">
+                                                    <input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย">
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="mt-2 mb-2 text-center">
+                                                    <input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย">
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="mt-2 mb-2 text-center">
+                                                    <input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์">
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="mt-2 mb-2">
+                                                    <div class="text-center">
+                                                        <button class="btn btn-primary btn-sm" type="button" onclick="addRow()"><?= $system_config['bootstrap']['btn_add'] ?> เพิ่มเเถว</button>
+                                                        <button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)"><?= $system_config['bootstrap']['btn_del'] ?> ลบเเถว</button>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2"></div>
+                        <!--  -->
+
+
+
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button id="btn-save-system" type="submit">บันทึก</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- <script src="../../public/js/adminMainCreateSystem.js?t=<?= CREATE_TIME_AT ?>"></script> -->
+<script>
+    function addRow() {
+        const table = document.getElementById("add-row-submanu");
+        const rowsCount = table.rows.length;
+        const newRow = table.insertRow();
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+        const cell4 = newRow.insertCell(3);
+        const cell5 = newRow.insertCell(4);
+
+        cell1.innerHTML = `<div class="mt-2 mb-2 text-center">${rowsCount + 1}</div>`;
+        cell2.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย"></div>`;
+        cell3.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"></div>`;
+        cell4.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์"></div>`;
+        cell5.innerHTML = `<div class="mt-2 mb-2"><div class="text-center"><button class="btn btn-primary btn-sm" type="button" onclick="addRow()"><?= $system_config['bootstrap']['btn_add'] ?> เพิ่มเเถว</button>&nbsp;<button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)"><?= $system_config['bootstrap']['btn_del'] ?> ลบเเถว</button></div></div>`;
+    }
+
+    function deleteRow(self) {
+        const row = self.parentNode.parentNode.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>
 
 <?php require __DIR__ . "../../../view/layout/footer.php"; ?>
