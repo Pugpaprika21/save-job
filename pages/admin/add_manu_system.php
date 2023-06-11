@@ -240,7 +240,7 @@ if (empty($_SESSION['user_data'])) {
     </div>
 </div>
 
-<script src="../../public/js/@@config.js?t=<?= CREATE_TIME_AT ?>"></script>
-<script src="../../public/js/adminMainCreateSystem.js?t=<?= CREATE_TIME_AT ?>"></script>
+<script src="../../public/js/configs/@@system.js?t=<?= CREATE_TIME_AT ?>"></script>
+<script src="../../public/js/components/adminMainCreateSystem.js?t=<?= CREATE_TIME_AT ?>"></script>
 
 <?php require __DIR__ . "../../../view/layout/footer.php"; ?>
