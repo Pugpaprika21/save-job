@@ -67,16 +67,6 @@ if (!function_exists('db_select')) {
         }
 
         return !empty($items[0]) ? $items[0] : $items;
-
-        // if ($to_arr == false) {
-        //     return $items;
-        // }
-
-        // if (count($items) > 1) {
-        //     return $items;
-        // }
-
-        // return !empty($items[0]) ? $items[0] : $items;
     }
 }
 
