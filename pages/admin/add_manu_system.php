@@ -19,7 +19,7 @@ if (empty($_SESSION['user_data'])) {
         background-color: #3F3385;
         border: none;
         color: white;
-        padding: 10px 32px;
+        padding: 8px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -136,7 +136,7 @@ if (empty($_SESSION['user_data'])) {
                         <!--  -->
                         <div class="col-sm-6">
                             <div class="input-group mt-3 mb-3">
-                                <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" title="Choose your color">
+                                <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" lang="th" title="เลือกสีพิ้นหลัง">
                                 <!-- <span class="input-group-text" id="basic-addon2">สีพื้นหลังระบบ</span> -->
                             </div>
                         </div>
@@ -146,7 +146,7 @@ if (empty($_SESSION['user_data'])) {
                         <!--  -->
                         <div class="col-sm-6">
                             <div class="input-group mb-3">
-                                <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" title="Choose your color">
+                                <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" lang="th" title="เลือกสีขอบ">
                                 <!-- <span class="input-group-text" id="basic-addon2">สีขอบระบบ</span> -->
                             </div>
                         </div>
@@ -156,8 +156,8 @@ if (empty($_SESSION['user_data'])) {
                         <!--  -->
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="fs_img_manu" class="form-label">รูปโปรไฟล์ระบบ</label>
-                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg">
+                                <label for="fs_img_manu" class="form-label">โปรไฟล์ระบบ</label>
+                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg" lang="th" title="เลือกไฟล์">
                             </div>
                         </div>
                         <div class="col-sm-4"></div>
@@ -196,17 +196,17 @@ if (empty($_SESSION['user_data'])) {
                                             </th>
                                             <th scope="col">
                                                 <div class="mt-2 mb-2 text-center">
-                                                    <input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย">
+                                                    <input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย" required>
                                                 </div>
                                             </th>
                                             <th scope="col">
                                                 <div class="mt-2 mb-2 text-center">
-                                                    <input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย">
+                                                    <input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"required>
                                                 </div>
                                             </th>
                                             <th scope="col">
                                                 <div class="mt-2 mb-2 text-center">
-                                                    <input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์">
+                                                    <input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์" required>
                                                 </div>
                                             </th>
                                             <th scope="col">
@@ -253,9 +253,9 @@ if (empty($_SESSION['user_data'])) {
         const cell5 = newRow.insertCell(4);
 
         cell1.innerHTML = `<div class="mt-2 mb-2 text-center">${rowsCount + 1}</div>`;
-        cell2.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย"></div>`;
-        cell3.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"></div>`;
-        cell4.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์"></div>`;
+        cell2.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย" required></div>`;
+        cell3.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย" required></div>`;
+        cell4.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์" required></div>`;
         cell5.innerHTML = `<div class="mt-2 mb-2"><div class="text-center"><button class="btn btn-primary btn-sm" type="button" onclick="addRow()"><?= $system_config['bootstrap']['btn_add'] ?> เพิ่มเเถว</button>&nbsp;<button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)"><?= $system_config['bootstrap']['btn_del'] ?> ลบเเถว</button></div></div>`;
     }
 
