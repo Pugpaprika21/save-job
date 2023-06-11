@@ -28,32 +28,31 @@ if (empty($_SESSION['user_data'])) {
                     </li>
                     <!-- APP NAME -->
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['system'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    <?php
+                    $nav_row = db_select("select count(*) as nav_count from manu_main_system_tb where mms_status = 'Y'");
+                    if ($nav_row['nav_count'] > 0) : ?>
+                        <?php
+                        $nav_main = db_select("select mms_title, mms_id from manu_main_system_tb where mms_status = 'Y'", '', '', true);
+                        foreach ($nav_main as $main_nav_rows) :
+                        ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= $main_nav_rows['mms_title'] ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <?php
+                                    $sub_manu = db_select("select mmss.mmss_id, mmss.mmss_title, mmss.mmss_text, mmss.mmss_path from manu_main_system_tb as mms inner join manu_main_sub_system_tb as mmss on mms.mms_id = mmss.ref_id where mms.mms_status = 'Y' and mmss.ref_id = '{$main_nav_rows['mms_id']}'", '', '', true);
+                                    foreach ($sub_manu as $sub_rows) :
+                                    ?>
+                                        <li><a class="dropdown-item" href="#"><?= $sub_rows['mmss_title'] ?></a></li>
+                                    <?php endforeach;  ?>
+                                </ul>
+                            </li>
+                        <?php endforeach;  ?>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['dashboard'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    <?php elseif ($nav_row['nav_count'] == 0) : ?>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['permission'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    <?php endif; ?>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +62,6 @@ if (empty($_SESSION['user_data'])) {
                             <li><a class="dropdown-item" href="<?= url_where("../pages/admin/add_manu_system.php", array('system' => 'add_manu', 'create_manu' => 'Y'), true) ?>">จัดการเมนู</a></li>
                         </ul>
                     </li>
-
                 </ul>
 
                 <span class="navbar-text">

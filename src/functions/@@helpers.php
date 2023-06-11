@@ -296,7 +296,7 @@ if (!function_exists('rend_string')) {
 if (!function_exists('file_upload')) {
 
     /**
-     * file_upload('../../upload/image', [
+     * file_upload('../../upload/image/', [
      *      'name' => $file['user_profile']['name'],
      *      'tmp_name' => $file['user_profile']['tmp_name']
      * ]);

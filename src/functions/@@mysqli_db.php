@@ -37,9 +37,10 @@ if (!function_exists('db_select')) {
      * @param string $tbl_or_sql|$full_select
      * @param string $fields
      * @param string $condi
+     * @param bool $to_arr
      * @return array
      */
-    function db_select($tbl_or_sql, $fields = '*', $condi = '')
+    function db_select($tbl_or_sql, $fields = '*', $condi = '', $to_arr = false)
     {
         $conn = db_connect();
         $items = [];
@@ -61,11 +62,21 @@ if (!function_exists('db_select')) {
 
         mysqli_close($conn);
 
-        if (count($items) > 1) {
+        if ($to_arr) {
             return $items;
         }
 
         return !empty($items[0]) ? $items[0] : $items;
+
+        // if ($to_arr == false) {
+        //     return $items;
+        // }
+
+        // if (count($items) > 1) {
+        //     return $items;
+        // }
+
+        // return !empty($items[0]) ? $items[0] : $items;
     }
 }
 
