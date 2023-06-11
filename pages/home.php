@@ -45,10 +45,10 @@ if (empty($_SESSION['user_data'])) {
                                     foreach ($sub_manu as $sub_rows) :
                                     ?>
                                         <li><a class="dropdown-item" href="../pages/<?= $sub_rows['mmss_path'] ?>?page_main=<?= $main_nav_rows['mms_id'] ?>&page_sub=<?= $sub_rows['mmss_id'] ?>"><?= $sub_rows['mmss_title'] ?></a></li>
-                                    <?php endforeach;  ?>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
-                        <?php endforeach;  ?>
+                        <?php endforeach; ?>
 
                     <?php elseif ($nav_row['nav_count'] == 0) : ?>
 
