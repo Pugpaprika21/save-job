@@ -109,8 +109,8 @@ if (empty($_SESSION['user_data'])) {
                             foreach ($card_main_manu as $card_main_manu_rows) :
                             ?>
                                 <div class="col">
-                                    <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>">
-                                        <div class="card-body shadow-sm rounded" style="background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>; border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;">
+                                    <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>" style="border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;">
+                                        <div class="card-body shadow-sm rounded" style="background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>;">
                                             <a href="<?= $card_main_manu_rows['mms_path'] ?>" class="text-decoration-none">
                                                 <div class="text-center mt-4 mb-4">
                                                     <img src="../upload/image/<?= $card_main_manu_rows['fs_real_name'] ?>" class="rounded" alt="..." style="width: 20%; height: 85%;">
