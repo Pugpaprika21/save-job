@@ -1,12 +1,4 @@
-// const formSubmitSystem = document.getElementById("form-btn-save-system");
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     formSubmitSystem.addEventListener("submit", function(e) {
-//         alert("ssssssss");
-//     });
-// });
-
-function addRow() {
+function addManuRow() {
     const table = document.getElementById("add-row-submanu");
     const rowsCount = table.rows.length;
     const newRow = table.insertRow();
@@ -20,10 +12,16 @@ function addRow() {
     cell2.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_title" name="mmss_title[]" placeholder="หัวข้อระบบย่อย"></div>`;
     cell3.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"></div>`;
     cell4.innerHTML = `<div class="mt-2 mb-2"><input type="text" class="form-control" id="mmss_path" name="mmss_path[]" placeholder="ลิงค์"></div>`;
-    cell5.innerHTML = `<div class="mt-2 mb-2"><div class="text-center"><button class="btn btn-primary btn-sm" type="button" onclick="addRow()">${bootstrap.iconBtn.add} เพิ่มเเถว</button>&nbsp;<button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)">${bootstrap.iconBtn.del} ลบเเถว</button></div></div>`;
+    cell5.innerHTML = `
+        <div class="mt-2 mb-2">
+            <div class="text-center">
+                <button class="btn btn-outline-primary btn-sm" type="button" onclick="addManuRow()">${bootstrap.iconBtn.add} เพิ่มเเถว</button>
+                <button class="btn btn-outline-danger btn-sm" type="button" onclick="deleteManuRow(this)">${bootstrap.iconBtn.del} ลบเเถว</button>
+            </div>
+        </div>`;
 }
 
-function deleteRow(self) {
+function deleteManuRow(self) {
     const row = self.parentNode.parentNode.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }

@@ -14,7 +14,6 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 <?php require __DIR__ . "../../../view/layout/header.php"; ?>
 
 <style>
-
     #btn-save-system {
         background-color: #3F3385;
         border: none;
@@ -53,32 +52,32 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                     </li>
                     <!-- APP NAME -->
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['system'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    <?php
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['dashboard'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    $nav_row = db_select("manu_main_system_tb", "count(*) as nav_count", "and mms_status = 'Y'");
+                    if ($nav_row['nav_count'] > 0) : ?>
+                        <?php
+                        $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title", "and mms_status = 'Y'", true);
+                        foreach ($nav_main as $main_nav_rows) :
+                        ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= $main_nav_rows['mms_title'] ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <?php
+                                    $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_type = 'manu_main_system_tb' and ref_id = '{$main_nav_rows['mms_id']}'", true);
+                                    foreach ($sub_manu as $sub_rows) :
+                                    ?>
+                                        <li><a class="dropdown-item" href="../pages/<?= $sub_rows['mmss_path'] ?>?page_main=<?= $main_nav_rows['mms_id'] ?>&page_sub=<?= $sub_rows['mmss_id'] ?>"><?= $sub_rows['mmss_title'] ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php endforeach; ?>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $system_config['nav']['permission'] ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                        </ul>
-                    </li>
+                    <?php elseif ($nav_row['nav_count'] == 0) : ?>
+
+                    <?php endif; ?>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,7 +87,6 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                             <li><a class="dropdown-item" href="<?= url_where("../../pages/admin/add_manu_system.php", array('system' => 'add_manu', 'create_manu' => 'Y'), true) ?>">จัดการเมนู</a></li>
                         </ul>
                     </li>
-
                 </ul>
 
                 <span class="navbar-text">
@@ -111,7 +109,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
         <div class="card">
             <div class="card-body shadow-sm">
                 <form id="form-btn-save-system" action="<?= url_where("../../process/admin/save_manu_system.php") ?>" method="post" enctype="multipart/form-data">
-                    <p class="text-start">เมนู / ระบบหลัก</p>
+                    <h5><span class="badge mb-2" style="background-color: #3F3385;">เมนู / ระบบหลัก</span></h5>
                     <div class="row">
                         <!--  -->
                         <div class="col-sm-6">
@@ -157,14 +155,15 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="fs_img_manu" class="form-label">โปรไฟล์ระบบ</label>
-                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg" lang="th" title="เลือกไฟล์">
+                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg" lang="th" title="เลือกไฟล์" required>
                             </div>
                         </div>
                         <div class="col-sm-4"></div>
                         <!--  -->
                     </div>
 
-                    <p class="text-start mt-2">เมนู / ระบบหลักย่อย</p>
+                    <!-- <p class="text-start mt-2">เมนู / ระบบหลักย่อย</p> -->
+                    <h5><span class="badge mb-2" style="background-color: #3F3385;">เมนู / ระบบหลักย่อย</span></h5>
                     <div class="row">
                         <!-- <div class="mb-3">
                         <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
@@ -177,7 +176,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                             <!-- <input type="hidden" id="btn-add" value="<?= $system_config['bootstrap']['btn_add'] ?>">
                         <input type="hidden" id="btn-del" value="<?= $system_config['bootstrap']['btn_del'] ?>"> -->
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-sm table-bordered">
                                     <thead style="color: #FFFFFF; background-color: #3F3385;">
                                         <tr>
                                             <th class="text-center" scope="col">ลำดับ</th>
@@ -201,7 +200,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                                             </th>
                                             <th scope="col">
                                                 <div class="mt-2 mb-2 text-center">
-                                                    <input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย"required>
+                                                    <input type="text" class="form-control" id="mmss_text" name="mmss_text[]" placeholder="รายละเอียดระบบย่อย" required>
                                                 </div>
                                             </th>
                                             <th scope="col">
@@ -212,8 +211,8 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                                             <th scope="col">
                                                 <div class="mt-2 mb-2">
                                                     <div class="text-center">
-                                                        <button class="btn btn-primary btn-sm" type="button" onclick="addRow()"><?= $system_config['bootstrap']['btn_add'] ?> เพิ่มเเถว</button>
-                                                        <button class="btn btn-danger btn-sm" type="button" onclick="deleteRow(this)"><?= $system_config['bootstrap']['btn_del'] ?> ลบเเถว</button>
+                                                        <button class="btn btn-outline-primary btn-sm" type="button" onclick="addManuRow()"><?= $system_config['bootstrap']['btn_add'] ?> เพิ่มเเถว</button>
+                                                        <button class="btn btn-outline-danger btn-sm" type="button" onclick="deleteManuRow(this)"><?= $system_config['bootstrap']['btn_del'] ?> ลบเเถว</button>
                                                     </div>
                                                 </div>
                                             </th>
@@ -241,6 +240,6 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 </div>
 
 <script src="../../public/js/configs/@@system.js?t=<?= CREATE_TIME_AT ?>"></script>
-<script src="../../public/js/components/adminMainCreateSystem.js?t=<?= CREATE_TIME_AT ?>"></script>
+<script src="../../public/js/components/adminManuSystem.js?t=<?= CREATE_TIME_AT ?>"></script>
 
 <?php require __DIR__ . "../../../view/layout/footer.php"; ?>
