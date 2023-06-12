@@ -29,7 +29,8 @@ if (empty($_SESSION['user_data'])) {
                     <!-- APP NAME -->
 
                     <?php
-                    $nav_row = db_select("select count(*) as nav_count from manu_main_system_tb where mms_status = 'Y'");
+
+                    $nav_row = db_select("manu_main_system_tb", "count(*) as nav_count", "and mms_status = 'Y'");
                     if ($nav_row['nav_count'] > 0) : ?>
                         <?php
                         $nav_main = db_select("select mms_id, mms_title from manu_main_system_tb where mms_status = 'Y'", '', '', true);
@@ -41,6 +42,7 @@ if (empty($_SESSION['user_data'])) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php
+                                    
                                     $sub_manu = db_select("select mmss.mmss_id, mmss.mmss_title, mmss.mmss_text, mmss.mmss_path from manu_main_system_tb as mms inner join manu_main_sub_system_tb as mmss on mms.mms_id = mmss.ref_id where mms.mms_status = 'Y' and mmss.ref_id = '{$main_nav_rows['mms_id']}'", '', '', true);
                                     foreach ($sub_manu as $sub_rows) :
                                     ?>
