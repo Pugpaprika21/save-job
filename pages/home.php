@@ -43,7 +43,7 @@ if (empty($_SESSION['user_data'])) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php
-                                    $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_id = '{$main_nav_rows['mms_id']}'", true);
+                                    $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_type = 'manu_main_system_tb' and ref_id = '{$main_nav_rows['mms_id']}'", true);
                                     foreach ($sub_manu as $sub_rows) :
                                     ?>
                                         <li><a class="dropdown-item" href="../pages/<?= $sub_rows['mmss_path'] ?>?page_main=<?= $main_nav_rows['mms_id'] ?>&page_sub=<?= $sub_rows['mmss_id'] ?>"><?= $sub_rows['mmss_title'] ?></a></li>
