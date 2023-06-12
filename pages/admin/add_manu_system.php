@@ -4,10 +4,12 @@ require __DIR__ . "../../../src/include/include.php";
 
 $system = get_b64("system");
 $create_manu = get_b64("create_manu");
+$add_status = get_b64("add_status");
 
 if (empty($_SESSION['user_data'])) redirect_to("../../../process/logout_main.php", array('user_name' => 'N', 'user_pass' => 'N'));
 
 if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('permission' => 'N'));
+
 
 ?>
 

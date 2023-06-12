@@ -32,7 +32,7 @@ if (empty($_SESSION['user_data'])) {
 
                     $nav_row = db_select("manu_main_system_tb", "count(*) as nav_count", "and mms_status = 'Y'");
                     if ($nav_row['nav_count'] > 0) : ?>
-                        <?php    
+                        <?php
                         $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title", "and mms_status = 'Y'", true);
                         foreach ($nav_main as $main_nav_rows) :
                         ?>
@@ -41,6 +41,7 @@ if (empty($_SESSION['user_data'])) {
                                     <?= $main_nav_rows['mms_title'] ?>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="">wwwww</a></li>  <!-- หน้าหลัก -->
                                     <?php
                                     $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_type = 'manu_main_system_tb' and ref_id = '{$main_nav_rows['mms_id']}'", true);
                                     foreach ($sub_manu as $sub_rows) :
@@ -78,17 +79,36 @@ if (empty($_SESSION['user_data'])) {
 <!-- card body -->
 
 <div class="card-content-main" style="margin-top: 40px;">
-    <?php
-    // get manu
-    $num_main = db_select("select count(*) as count_manu from manu_main_system_tb where mms_status = 'Y'");
-
-    ?>
     <div class="container-fluid">
         <div class="card">
             <div class="card-body shadow-sm">
                 <div class="card-content-sub">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <?php if ($num_main['count_manu'] > 0) : ?>
+                        <?php
+                        $num_main = db_select("select count(*) as count_manu from manu_main_system_tb where mms_status = 'Y'");
+                        if ($num_main['count_manu'] > 0) : ?>
+                            <?php
+                            $sql_main_manu = "SELECT * FROM manu_main_system_tb as mms
+                                INNER JOIN file_system_tb as fs ON mms.mms_id = fs.ref_id
+                                INNER JOIN manu_color_system_tb as mcs ON mms.mms_id = mcs.ref_id
+                            ";
+                            $card_main_manu = db_select($sql_main_manu, '', '', true);
+                            foreach ($card_main_manu as $card_main_manu_rows) :
+                            ?>
+                                <div class="col">
+                                    <div class="card h-100" id="card-manu-">
+                                        <div class="card-body shadow-sm rounded">
+                                            <a href="" class="text-decoration-none">
+                                                <div class="text-center mt-4 mb-4">
+                                                    <img src="../upload/image/<?= $card_main_manu_rows['fs_real_name'] ?>" class="rounded" alt="..." style="width: 20%; height: 85%;">
+                                                </div>
+                                                <h5 class="card-title"><?= $card_main_manu_rows['mms_title'] ?></h5>
+                                                <p class="card-text"><?= $card_main_manu_rows['mms_text'] ?></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
 
                         <?php elseif ($num_main['count_manu'] == 0) : ?>
                             <style>

@@ -324,7 +324,7 @@ if (!function_exists('file_upload')) {
         $nameFile = explode('.', $file['name']);
         $file_name = rend_string($nameFile[0]) . round(microtime(true) * 1000) . '.' . $imageFileType;
 
-        $file_target = "{$path}_{$file_name}";
+        $file_target = "{$file_name}";
         move_uploaded_file($file['tmp_name'], $file_target);
         chmod($file_target, 0777);
 
