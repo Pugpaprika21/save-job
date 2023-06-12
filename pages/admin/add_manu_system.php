@@ -135,6 +135,16 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
                         <!--  -->
                         <div class="col-sm-6">
+                            <div class="input-group mt-3">
+                                <input type="text" class="form-control" id="mms_path" name="mms_path" placeholder="ลิงค์ระบบหลัก">
+                                <!-- <span class="input-group-text" id="basic-addon2">หัวข้อระบบหลัก</span> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <!--  -->
+
+                        <!--  -->
+                        <div class="col-sm-6">
                             <div class="input-group mt-3 mb-3">
                                 <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" lang="th" title="เลือกสีพิ้นหลัง">
                                 <!-- <span class="input-group-text" id="basic-addon2">สีพื้นหลังระบบ</span> -->
@@ -164,19 +174,9 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                         <!--  -->
                     </div>
 
-                    <!-- <p class="text-start mt-2">เมนู / ระบบหลักย่อย</p> -->
                     <h5><span class="badge mb-2" style="background-color: #3F3385;">เมนู / ระบบหลักย่อย</span></h5>
                     <div class="row">
-                        <!-- <div class="mb-3">
-                        <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-                        </div>
-                    </div> -->
-                        <!--  -->
                         <div class="col-sm-10">
-                            <!-- <input type="hidden" id="btn-add" value="<?= $system_config['bootstrap']['btn_add'] ?>">
-                        <input type="hidden" id="btn-del" value="<?= $system_config['bootstrap']['btn_del'] ?>"> -->
                             <div class="table-responsive">
                                 <table class="table table-sm table-bordered">
                                     <thead style="color: #FFFFFF; background-color: #3F3385;">

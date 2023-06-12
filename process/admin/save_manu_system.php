@@ -11,6 +11,7 @@ if (empty($user_data)) {
 $manu_main_system_tb = array();
 $manu_main_system_tb['mms_title'] = req('mms_title');
 $manu_main_system_tb['mms_text'] = req('mms_text');
+$manu_main_system_tb['mms_path'] = req('mms_path');
 $manu_main_system_tb['mms_status'] = 'Y';
 $manu_main_system_tb['create_date_at'] = CREATE_DATE_AT;
 $manu_main_system_tb['create_time_at'] = CREATE_TIME_AT;
