@@ -67,6 +67,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                                     <?= $main_nav_rows['mms_title'] ?>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href=""></a></li>
                                     <?php
                                     $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_type = 'manu_main_system_tb' and ref_id = '{$main_nav_rows['mms_id']}'", true);
                                     foreach ($sub_manu as $sub_rows) :
