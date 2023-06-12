@@ -10,6 +10,19 @@ if (empty($_SESSION['user_data'])) {
 
 <?php require __DIR__ . "../../view/layout/header.php"; ?>
 
+<!-- <style>
+    #card-manu.card-body {
+        transition: background-color 0.3s ease;
+        border: 1px solid #ccc;
+        border-color: #ccc;
+    }
+
+    #card-manu.card-body:hover {
+        background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>;
+        border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
+    }
+</style> -->
+
 <div class="nav-main">
     <nav class="navbar navbar-expand-lg shadow p-2 mb-4 bg-body-tertiary rounded">
         <div class="container-fluid">
@@ -33,7 +46,7 @@ if (empty($_SESSION['user_data'])) {
                     $nav_row = db_select("manu_main_system_tb", "count(*) as nav_count", "and mms_status = 'Y'");
                     if ($nav_row['nav_count'] > 0) : ?>
                         <?php
-                        $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title", "and mms_status = 'Y'", true);
+                        $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title, mms_path", "and mms_status = 'Y'", true);
                         foreach ($nav_main as $main_nav_rows) :
                         ?>
                             <li class="nav-item dropdown">
@@ -41,7 +54,7 @@ if (empty($_SESSION['user_data'])) {
                                     <?= $main_nav_rows['mms_title'] ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">wwwww</a></li>  <!-- หน้าหลัก -->
+                                    <li><a class="dropdown-item" href="<?= $main_nav_rows['mms_path'] ?>"><?= $main_nav_rows['mms_title'] ?></a></li> <!-- หน้าหลัก -->
                                     <?php
                                     $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_type = 'manu_main_system_tb' and ref_id = '{$main_nav_rows['mms_id']}'", true);
                                     foreach ($sub_manu as $sub_rows) :
@@ -96,14 +109,14 @@ if (empty($_SESSION['user_data'])) {
                             foreach ($card_main_manu as $card_main_manu_rows) :
                             ?>
                                 <div class="col">
-                                    <div class="card h-100" id="card-manu-">
-                                        <div class="card-body shadow-sm rounded">
-                                            <a href="" class="text-decoration-none">
+                                    <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>">
+                                        <div class="card-body shadow-sm rounded" style="background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>; border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;">
+                                            <a href="<?= $card_main_manu_rows['mms_path'] ?>" class="text-decoration-none">
                                                 <div class="text-center mt-4 mb-4">
                                                     <img src="../upload/image/<?= $card_main_manu_rows['fs_real_name'] ?>" class="rounded" alt="..." style="width: 20%; height: 85%;">
                                                 </div>
-                                                <h5 class="card-title"><?= $card_main_manu_rows['mms_title'] ?></h5>
-                                                <p class="card-text"><?= $card_main_manu_rows['mms_text'] ?></p>
+                                                <h5 class="card-title" style="color: #FFFFFF;"><?= $card_main_manu_rows['mms_title'] ?></h5>
+                                                <p class="card-text" style="color: #FFFFFF;"><?= $card_main_manu_rows['mms_text'] ?></p>
                                             </a>
                                         </div>
                                     </div>
