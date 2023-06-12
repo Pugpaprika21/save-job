@@ -34,7 +34,6 @@ if (empty($_SESSION['user_data'])) {
                     if ($nav_row['nav_count'] > 0) : ?>
                         <?php    
                         $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title", "and mms_status = 'Y'", true);
-                        //echo_r($nav_main);
                         foreach ($nav_main as $main_nav_rows) :
                         ?>
                             <li class="nav-item dropdown">
