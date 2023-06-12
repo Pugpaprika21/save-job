@@ -32,8 +32,9 @@ if (empty($_SESSION['user_data'])) {
 
                     $nav_row = db_select("manu_main_system_tb", "count(*) as nav_count", "and mms_status = 'Y'");
                     if ($nav_row['nav_count'] > 0) : ?>
-                        <?php
-                        $nav_main = db_select("select mms_id, mms_title from manu_main_system_tb where mms_status = 'Y'", '', '', true);
+                        <?php    
+                        $nav_main = db_select("manu_main_system_tb", "mms_id, mms_title", "and mms_status = 'Y'", true);
+                        //echo_r($nav_main);
                         foreach ($nav_main as $main_nav_rows) :
                         ?>
                             <li class="nav-item dropdown">
@@ -42,8 +43,7 @@ if (empty($_SESSION['user_data'])) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php
-                                    
-                                    $sub_manu = db_select("select mmss.mmss_id, mmss.mmss_title, mmss.mmss_text, mmss.mmss_path from manu_main_system_tb as mms inner join manu_main_sub_system_tb as mmss on mms.mms_id = mmss.ref_id where mms.mms_status = 'Y' and mmss.ref_id = '{$main_nav_rows['mms_id']}'", '', '', true);
+                                    $sub_manu = db_select("manu_main_sub_system_tb", "mmss_id, mmss_title, mmss_text, mmss_path", "and mmss_status = 'Y' and ref_id = '{$main_nav_rows['mms_id']}'", true);
                                     foreach ($sub_manu as $sub_rows) :
                                     ?>
                                         <li><a class="dropdown-item" href="../pages/<?= $sub_rows['mmss_path'] ?>?page_main=<?= $main_nav_rows['mms_id'] ?>&page_sub=<?= $sub_rows['mmss_id'] ?>"><?= $sub_rows['mmss_title'] ?></a></li>
