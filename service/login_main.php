@@ -11,7 +11,16 @@ if ($request['action_'] == 'login') {
     $user_name = str($request['username']);
     $user_pass = str($request['userpass']);
 
-    $chk_login = db_select("select user_id, user_name, user_pass, user_status, user_token, count(*) as chk_login from user_tb where user_name = '{$user_name}' and user_pass = '{$user_pass}'");
+    $chk_login = db_select("SELECT 
+        user_id, 
+        user_name, 
+        user_pass, 
+        user_status, 
+        user_token, 
+        COUNT(*) AS chk_login 
+    FROM user_tb 
+    WHERE user_name = '{$user_name}' 
+    AND user_pass = '{$user_pass}'");
 
     if ($chk_login['chk_login'] > 0) {
 
