@@ -101,9 +101,9 @@ if (empty($_SESSION['user_data'])) {
                         $num_main = db_select("select count(*) as count_manu from manu_main_system_tb where mms_status = 'Y'");
                         if ($num_main['count_manu'] > 0) : ?>
                             <?php
-                            $sql_main_manu = "SELECT * FROM manu_main_system_tb as mms
-                                INNER JOIN file_system_tb as fs ON mms.mms_id = fs.ref_id
-                                INNER JOIN manu_color_system_tb as mcs ON mms.mms_id = mcs.ref_id
+                            $sql_main_manu = "SELECT * FROM manu_main_system_tb AS mms
+                                INNER JOIN file_system_tb AS fs ON mms.mms_id = fs.ref_id
+                                INNER JOIN manu_color_system_tb AS mcs ON mms.mms_id = mcs.ref_id
                             ";
                             $card_main_manu = db_select($sql_main_manu, '', '', true);
                             foreach ($card_main_manu as $card_main_manu_rows) :
