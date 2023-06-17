@@ -37,7 +37,6 @@ if (!function_exists('db_select')) {
      * @param string $tbl_or_sql|$full_select
      * @param string $fields
      * @param string $condi
-     * @param bool $to_arr
      * @return array
      */
     function db_select($tbl_or_sql, $fields = '*', $condi = '', $to_arr = false)
@@ -78,7 +77,7 @@ if (!function_exists('db_insert')) {
      * @param string $tbl
      * @param array $data
      * @param string $primary
-     * @return bool|array
+     * @return array|bool
      */
     function db_insert($tbl, $data, $primary = '?')
     {
@@ -263,5 +262,42 @@ if (!function_exists('db_query')) {
         }
         mysqli_close($conn);
         return false;
+    }
+}
+
+if (!function_exists('db_last_row')) {
+
+    /**
+     * #db_last_row("user_tb", "user_id");
+     *
+     * @param string $tbl
+     * @param string $primary
+     * @return array
+     */
+    function db_last_row($tbl, $primary)
+    {
+        $d = now('d');
+        write_log($tbl,  __DIR__ . "/../../logs/process/query_select_{$d}.txt");
+        return db_select("SELECT * FROM {$tbl} ORDER BY {$primary} DESC LIMIT 1");
+    }
+}
+
+if (!function_exists('db_fetch_array')) {
+
+    /**
+     * #db_fetch_array("select * from user_tb");
+     *
+     * @param string $tbl_or_sql
+     * @return array|null
+     */
+    function db_fetch_array(string $tbl_or_sql): array|null
+    {
+        if (preg_match('/^SELECT/i', $tbl_or_sql)) {
+            $d = now('d');
+            write_log($tbl_or_sql,  __DIR__ . "/../../logs/process/query_select_{$d}.txt");
+            return db_select($tbl_or_sql, '', '', true);
+        }
+
+        return null;
     }
 }
