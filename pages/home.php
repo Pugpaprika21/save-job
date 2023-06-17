@@ -95,6 +95,7 @@ if (empty($_SESSION['user_data'])) {
     <div class="container-fluid">
         <div class="card">
             <div class="card-body shadow-sm">
+                <p>ระบบหลัก</p>
                 <div class="card-content-sub">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <?php
@@ -110,6 +111,7 @@ if (empty($_SESSION['user_data'])) {
                             ?>
                                 <style>
                                     #card-manu-<?= $card_main_manu_rows['mms_id'] ?> {
+                                        border: 1px solid <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
                                         border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
                                     }
 
@@ -119,9 +121,8 @@ if (empty($_SESSION['user_data'])) {
 
                                     #card-manu-body-<?= $card_main_manu_rows['mms_id'] ?>:hover {
                                         background-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
-                                        transition: background-color 0.5s linear;
+                                        transition: background-color 0.5s ease;
                                     }
-
                                 </style>
                                 <div class="col">
                                     <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>">
