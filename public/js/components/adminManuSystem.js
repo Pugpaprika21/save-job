@@ -1,3 +1,15 @@
+const imageProfile = document.getElementById("fs_img_manu");
+
+imageProfile.addEventListener("change", function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        document.getElementById("preview-image-profile-system").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+
 function addManuRow() {
     const table = document.getElementById("add-row-submanu");
     const rowsCount = table.rows.length;

@@ -166,16 +166,26 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
                         <!--  -->
                         <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="fs_img_manu" class="form-label">โปรไฟล์ระบบ</label>
-                                <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg" lang="th" title="เลือกไฟล์" required>
+                            <div class="row gx-5">
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="fs_img_manu" class="form-label">โปรไฟล์ระบบ</label>
+                                        <input class="form-control form-control-sm" id="fs_img_manu" name="fs_img_manu" type="file" accept=".png, .jpg, .jpeg" lang="th" title="เลือกไฟล์" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <img src="../../upload/image/bootstrap-logo-shadow.png" class="rounded mx-auto d-block" id="preview-image-profile-system" alt="..." style="width: 20%; height: 20%;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-4"></div>
                         <!--  -->
+
                     </div>
 
-                    <h5><span class="badge mb-2" style="background-color: #3F3385;">เมนู / ระบบหลักย่อย</span></h5>
+                    <h5><span class="badge mt-2 mb-2" style="background-color: #3F3385;">เมนู / ระบบหลักย่อย</span></h5>
                     <div class="row">
                         <div class="col-sm-10">
                             <div class="table-responsive">
