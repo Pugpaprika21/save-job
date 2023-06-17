@@ -146,9 +146,17 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
                         <!--  -->
                         <div class="col-sm-6">
-                            <div class="input-group mt-3 mb-3">
-                                <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" lang="th" title="เลือกสีพิ้นหลัง">
-                                <!-- <span class="input-group-text" id="basic-addon2">สีพื้นหลังระบบ</span> -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group mt-4 mb-3">
+                                        <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" lang="th" title="เลือกสีพิ้นหลัง">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group mt-4 mb-3">
+                                        <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" lang="th" title="เลือกสีขอบ">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-4"></div>
@@ -156,17 +164,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
                         <!--  -->
                         <div class="col-sm-6">
-                            <div class="input-group mb-3">
-                                <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" lang="th" title="เลือกสีขอบ">
-                                <!-- <span class="input-group-text" id="basic-addon2">สีขอบระบบ</span> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4"></div>
-                        <!--  -->
-
-                        <!--  -->
-                        <div class="col-sm-6">
-                            <div class="row gx-5">
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="fs_img_manu" class="form-label">โปรไฟล์ระบบ</label>
