@@ -17,7 +17,7 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
 <style>
     #btn-save-system {
-        background-color: #3F3385;
+        background-color: #4ABE37;
         border: none;
         color: white;
         padding: 8px 32px;
@@ -32,6 +32,25 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
     }
 
     #btn-save-system:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    #btn-back-system {
+        background-color: #C84126;
+        border: none;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+
+    #btn-back-system:hover {
         box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
 </style>
@@ -105,13 +124,12 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
 
 <div class="card-content-main" style="margin-top: 40px;">
     <div class="container-fluid">
-        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2" type="button">Button</button>
-            <button class="btn btn-primary" type="button">Button</button>
-        </div> -->
-        <div class="card">
-            <div class="card-body shadow-sm">
-                <form id="form-btn-save-system" action="<?= url_where("../../process/admin/save_manu_system.php") ?>" method="post" enctype="multipart/form-data">
+        <div style="display: flex; justify-content: flex-end;">
+            <a href="<?= url_where("../../pages/home.php") ?>" id="btn-back-system">ย้อนกลับ</a>
+        </div>
+        <form id="form-btn-save-system" action="<?= url_where("../../process/admin/save_manu_system.php") ?>" method="post" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-body shadow-sm">
                     <h5><span class="badge mb-2" style="background-color: #3F3385;">เมนู / ระบบหลัก</span></h5>
                     <div class="row">
                         <!--  -->
@@ -235,18 +253,15 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                         </div>
                         <div class="col-sm-2"></div>
                         <!--  -->
-
-
-
                     </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button id="btn-save-system" type="submit">บันทึก</button>
-                    </div>
-
-                </form>
+                </div>
             </div>
-        </div>
+            <div style="display: flex; justify-content: flex-end;">
+                <button id="btn-save-system" type="submit">บันทึก</button>
+            </div>
+        </form>
+
     </div>
 </div>
 
