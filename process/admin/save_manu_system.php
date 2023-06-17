@@ -8,6 +8,8 @@ if (empty($user_data)) {
     redirect_to("../process/logout_main.php", array('user_name' => 'N', 'user_pass' => 'N'));
 }
 
+//echo_r($_FILES);
+
 $manu_main_system_tb = array();
 $manu_main_system_tb['mms_title'] = req('mms_title');
 $manu_main_system_tb['mms_text'] = req('mms_text');

@@ -148,12 +148,12 @@ if ($create_manu != 'Y') redirect_to("../../../process/logout_main.php", array('
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="input-group mt-4 mb-3">
+                                    <div class="input-group mt-4 mb-2">
                                         <input type="color" class="form-control form-control-color" id="mcs_bgcolor" name="mcs_bgcolor" value="#299ABE" lang="th" title="เลือกสีพิ้นหลัง">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="input-group mt-4 mb-3">
+                                    <div class="input-group mt-4 mb-2">
                                         <input type="color" class="form-control form-control-color" id="mcs_bdcolor" name="mcs_bdcolor" value="#073240" lang="th" title="เลือกสีขอบ">
                                     </div>
                                 </div>
