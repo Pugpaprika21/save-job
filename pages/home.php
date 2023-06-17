@@ -108,10 +108,25 @@ if (empty($_SESSION['user_data'])) {
                             $card_main_manu = db_select($sql_main_manu, '', '', true);
                             foreach ($card_main_manu as $card_main_manu_rows) :
                             ?>
+                                <style>
+                                    #card-manu-<?= $card_main_manu_rows['mms_id'] ?> {
+                                        border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
+                                    }
+
+                                    #card-manu-body-<?= $card_main_manu_rows['mms_id'] ?> {
+                                        background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>;
+                                    }
+
+                                    #card-manu-body-<?= $card_main_manu_rows['mms_id'] ?>:hover {
+                                        background-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;
+                                        transition: background-color 0.5s linear;
+                                    }
+
+                                </style>
                                 <div class="col">
-                                    <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>" style="border-color: <?= $card_main_manu_rows['mcs_bdcolor'] ?>;">
-                                        <div class="card-body shadow-sm rounded" style="background-color: <?= $card_main_manu_rows['mcs_bgcolor'] ?>;">
-                                            <a href="<?= $card_main_manu_rows['mms_path'] ?>" class="text-decoration-none">
+                                    <div class="card h-100" id="card-manu-<?= $card_main_manu_rows['mms_id'] ?>">
+                                        <div class="card-body shadow-sm rounded" id="card-manu-body-<?= $card_main_manu_rows['mms_id'] ?>">
+                                            <a href="<?= $card_main_manu_rows['mms_path'] ?>" class="text-decoration-none" id="a-href-link-<?= $card_main_manu_rows['mms_id'] ?>">
                                                 <div class="text-center mt-4 mb-4">
                                                     <img src="../upload/image/<?= $card_main_manu_rows['fs_real_name'] ?>" class="rounded" alt="..." style="width: 20%; height: 85%;">
                                                 </div>

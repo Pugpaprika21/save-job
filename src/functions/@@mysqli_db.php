@@ -290,7 +290,7 @@ if (!function_exists('db_fetch_array')) {
      * @param string $tbl_or_sql
      * @return array|null
      */
-    function db_fetch_array(string $tbl_or_sql): array|null
+    function db_fetch_array($tbl_or_sql)
     {
         if (preg_match('/^SELECT/i', $tbl_or_sql)) {
             $d = now('d');
